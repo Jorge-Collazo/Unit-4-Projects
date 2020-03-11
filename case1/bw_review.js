@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Jorge Collazo
+   Date:   3-11-20
    
    Filename: bw_review.js
 	
@@ -43,6 +43,18 @@
   
   
 /*=================================================================*/
+window.onload = init();
+
+function init(){
+   var stars = document.getElementsByClassName("stars");
+   for(var i = 0; i < stars.length; i++){
+      stars[i].style.cursor = "pointer";
+      stars[i].addEventListener("mouseenter", lightstars);
+   }
+   document.addEventListener("keyup", updateCount);
+}
+
+
 
 function countCharacters(textStr) {
    var commentregx = /\s/g;

@@ -46,15 +46,52 @@
 window.onload = init();
 
 function init(){
-   var stars = document.getElementsByClassName("stars");
+   var stars = document.querySelectorAll("span#stars img");
    for(var i = 0; i < stars.length; i++){
       stars[i].style.cursor = "pointer";
-      stars[i].addEventListener("mouseenter", lightstars);
+      stars[i].addEventListener("mouseenter", lightStars);
    }
-   document.addEventListener("keyup", updateCount);
+   document.getElementById("comment").addEventListener("keyup", updateCount);
 }
 
+function lightStars(e){
+   var starNumber = e.target.alt;
+   var stars = document.querySelectorAll("span#stars img")
 
+   for(var i = 0; i < starNumber; i++){
+      stars[i].src = "bw_star2.png";
+   }
+   for(var i = starNumber; i < 5; i++){
+      stars[i].src = "bw_star.png";
+   }
+   document.getElementById("rating").value = starNumber + " stars";
+   e.target.addEventListener("mouseleave", turnOffStars);
+   e.target.addEventListener("click", function(){
+      e.target.removeEventListener("mouseleave", turnOffStars);
+   });
+}
+
+function turnOffStars(e){
+   var stars = document.querySelectorAll("span#stars img")
+   for(var i = 0; i < stars.length; i++){
+      stars[i].src = "bw_star.png"
+   }
+   document.getElementById("rating").innerHTML = ""
+}
+
+function updateCount(){
+   var commentText = document.getElementById("comment").value;
+   var charCount = countCharacters(commentText);
+   var wordCountBox = document.getElementById("wordCount")
+   wordCountBox = "charCount/1000"
+   if(charCount > 1000){
+      wordCountBox.style.color = "white"
+      wordCountBox.style.backgroundColor = "red"
+   }else{
+      wordCountBox.style.color = "black"
+      wordCountBox.style.backgroundColor = "white"
+   }
+}
 
 function countCharacters(textStr) {
    var commentregx = /\s/g;

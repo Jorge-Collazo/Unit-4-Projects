@@ -45,12 +45,47 @@ function init(){
 }
 
 function buttonClick(e){
-   var calcValue = document.getElementById("calcWindow");
-   var calcDecimal = document.getElementsByTagName("decimals");
+   var calcValue = document.getElementById("calcWindow").value;
+   var calcDecimal = document.getElementsByTagName("decimals").value;
    var buttonValue = e.target.value;
-   
+   switch(buttonValue){
+      case "del":
+         calcValue = "";
+         break
+      case "bksp":
+         calcValue += eraseChar(calcValue);
+         break
+      case "enter":
+         calcValue += " = " + evalEq(calcValue, calcDecimal) + "\n";
+         break
+      case "prev":
+         calcValue += lastEq(calcValue);
+         break
+      default:
+         calcValue += buttonValue;
+         break
+   }
+   calcValue = document.getElementById("calcWindow").value;
+   document.getElementById("calcWindow").focus();
 }
 
+function calcKeys(e){
+   var calcValue = document.getElementById("calcWindow").value;
+   var calcDecimal = document.getElementsByTagName("decimals").value;
+   switch(e.keys){
+      case "Delete":
+         calcValue = "";
+         break;
+      case "Enter":
+         calcValue += " = " + evalEq(calcValue, calcDecimal);
+         break;
+      case "ArrowUp":
+         calcValue += lastEq(calcWindow);
+         e.preventDefault();
+         break;
+   }
+   calcWindow = 
+}
 
 /* ===================================================================== */
 

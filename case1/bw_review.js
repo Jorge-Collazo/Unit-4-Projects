@@ -83,7 +83,7 @@ function updateCount(){
    var commentText = document.getElementById("comment").value;
    var charCount = countCharacters(commentText);
    var wordCountBox = document.getElementById("wordCount")
-   wordCountBox = "charCount/1000"
+   wordCountBox.value = charCount + "/1000"
    if(charCount > 1000){
       wordCountBox.style.color = "white"
       wordCountBox.style.backgroundColor = "red"

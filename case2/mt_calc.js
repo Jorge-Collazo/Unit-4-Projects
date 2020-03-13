@@ -73,7 +73,7 @@ function buttonClick(e){
 function calcKeys(e){
    var calcValue = document.getElementById("calcWindow").value;
    var calcDecimal = document.getElementById("decimals").value;
-   switch(e.keys){
+   switch(e.key){
       case "Delete":
          calcValue = "";
          break;

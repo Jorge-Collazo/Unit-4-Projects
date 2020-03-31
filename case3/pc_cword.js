@@ -7,8 +7,8 @@
 
    Crossword Puzzle Script
    
-   Author: 
-   Date:   
+   Author: Jorge Collazo
+   Date:   3-30-20
    
    Global Variables
    ================
@@ -49,8 +49,18 @@
 
 */
 
+var allLetters
+var currentLetter
+var wordLetters
+var acrossClue
+var downClue
+var typeDirection
 
 
+window.onload = init()
+function init(){
+      
+}
 
 
    
